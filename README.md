@@ -14,13 +14,23 @@ Un QR Code format à un site Web : Diffuser votre site web
 ## Comment ça fonctionne ?
 Rien de plus simple:
 
-- Télécharger l'executable https://github.com/couleurwest/PyQrCoder/blob/master/dist/PyQrCoder
-- Exécuter `PyQrCoder.exe`
+- Télécharger l'executable :
+  - Windows : https://github.com/couleurwest/PyQrCoder/blob/master/dist/PyQrCoder_Windows
+  - Linux : https://github.com/couleurwest/PyQrCoder/blob/master/dist/PyQrCoder_Linux
+- Lancer l'application
+  - Window : Executer `PyQrCoder.exe`
+  - Linux : 
+```
+  $ cd <chemin PyQrCoder_Linux>
+  $ ./PrQrCoder
+```
 - Saisissez les informations relatives à votre besoin
 - Générer 
 
-C'est Ok : Le QRCode est généré et enregistrer dans le repertoire `generation`
+**C'est Ok**
+
+Le QRCode est généré et enregistrer dans le repertoire `generation`
 
 ## RGPD
 
-L'outil n'enregistre, ne collectet et ne transmet aucune données.
+L'outil n'enregistre, ne collecte et ne transmet aucunes données.
