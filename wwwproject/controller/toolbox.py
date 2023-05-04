@@ -5,7 +5,7 @@ from string import punctuation
 RGX_ACCENTS = 'àâäãéèêëîïìôöòõùüûÿñç'
 RGX_EMAIL = r'^[a-z0-9_.+-]+@[a-z0-9-]+\.[a-z0-9-.]+$'
 RGX_PUNCT = '#!?$%&_@*+-'
-RGX_PHONE = r'^0[1-9]\d{8}$'
+RGX_PHONE = r'([+]\d+|0)\d{9,}'
 RGX_URL = r'https?:\/\/(www\.)?[-a-z0-9@:%._\+~#=]{1,256}\.[a-z0-9()]{1,6}\b([-a-z0-9()@:%_\+.~#?&//=]*)'
 
 

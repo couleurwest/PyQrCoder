@@ -8,7 +8,7 @@ a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[('/home/dreamgeeker/pyProject/PyQrCoder/.venv/lib/python3.10/site-packages/eel/eel.js', 'eel'), ('wwwproject', 'wwwproject'), ('config.yml', '.'), ('main.js', '.'), ('package.json', '.')],
+    datas=[('C:\\Python310\\lib\\site-packages\\eel\\eel.js', 'eel'), ('wwwproject', 'wwwproject'), ('config.yml', '.'), ('main.js', '.'), ('package.json', '.')],
     hiddenimports=['bottle_websocket', 'bottle_websocket'],
     hookspath=[],
     hooksconfig={},
@@ -41,5 +41,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['wwwproject/logo.ico'],
+    icon=['wwwproject\\logo.ico'],
 )

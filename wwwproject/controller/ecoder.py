@@ -1,22 +1,20 @@
 import eel
+import qrcode
+from PIL import Image
 from dreamtools import profiler
-
 from validator import validate
 
-from PIL import Image
-import qrcode
-
 from wwwproject.controller import QRcolor
-from wwwproject.controller.validation import UrlRule, PhoneRule
-
-
+from wwwproject.controller.validation import URLRule, PhoneRule, EMAILRule
 
 
 class QRCoder():
     logo = profiler.path_build(profiler.dircurrent(__file__), '../pics/logo.jpg')
+
     def __init__(self, export, **kw):
         super(QRCoder, self).__init__(**kw)
         self.export = export
+
     def vcard(self, card):
         from segno import helpers
 
@@ -28,7 +26,7 @@ class QRCoder():
             if result:
                 qrcode = helpers.make_mecard(**card.mecard_data)
                 path_export = profiler.path_build(self.export, 'qrcode_vcard.png')
-                qrcode.save(path_export , dark=QRcolor, scale=4)
+                qrcode.save(path_export, dark=QRcolor, scale=4)
                 return "success", f"QRCode generated : {profiler.path_build(self.export, 'qrcode_vcard.png')}"
             else:
                 for field, err in errors.items():
@@ -74,9 +72,9 @@ class QRCoder():
             # save the QR code generated
             QRimg.save(path_export)
 
-            return True, f"QRCode generated : {path_export}"
+            return "success", f"QRCode generated : {path_export}"
         except Exception as e:
-            return False, f"Erreur systeme: {e.__str__()}"
+            return "alert", f"Erreur systeme: {e.__str__()}"
 
     def reset_form(self):
         eel.reset_form_js()
@@ -86,14 +84,8 @@ class QRCoder():
         return {
             "name": "required",
             "surname": "required",
-            "email": "required|mail",
-            "url": UrlRule(),
+            "email": EMAILRule(True),
+            "url": URLRule(),
             "phone_1": PhoneRule(),
             "phone_2": PhoneRule()
         }
-
-    @property
-    def url_rules(self):
-        return {"url": UrlRule()}
-
-

@@ -6,29 +6,29 @@ from dreamtools.tools import clean_space
 @dataclasses.dataclass
 class ECarder:
     name: str
-    email: str = None
+    surname: str
+    email: str
 
-    surname: str = None
-    phone_1: str = None
-    phone_2: str = None
+    phone_1: str = ""
+    phone_2: str = ""
 
-    url: str = None
-    corp: str = None
+    url: str = ""
+    corp: str = ""
 
     @property
     def card_name(self):
         """Mise en forme identité"""
-        if self.name and self.surname.capitalize():
+        if self.name and self.surname:
             return self.name.upper() + ',' + self.surname.capitalize()
         else:
             return self.name or self.surname
     @property
     def card_phone(self):
-        return list(map(lambda d: clean_space(d), filter(lambda d: d, [self.phone_1, self.phone_1])))
+        return list(map(lambda d: clean_space(d), filter(lambda d: d, [self.phone_1, self.phone_2])))
 
     @property
     def mecard_data(self):
-        """Donnes au foram MeCard"""
+        """Donnes au format MeCard"""
         dcm = {
             'email': self.email,
             'nickname': self.corp,
@@ -42,12 +42,13 @@ class ECarder:
     def mecard(self):
         """schement de validation """
         dcm = {
-            'email': self.email,
-            'url': self.url,
-            'phone_1': self.phone_1,
-            'phone_2': self.phone_2,
             'name': self.name,
             'surname': self.surname,
+            'email': self.email,
+            'phone_1': self.phone_1,
+            'corp': self.corp,
+            'url': self.url,
+            'phone_2': self.phone_2,
         }
         return {k: v or '' for (k, v) in dcm.items()}
 

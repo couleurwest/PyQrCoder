@@ -7,7 +7,7 @@ from validator import validate
 
 from wwwproject.controller.ecarder import ECarder
 from wwwproject.controller.ecoder import QRCoder
-from wwwproject.controller.validation import UrlRule
+from wwwproject.controller.validation import URLRule
 
 export = profiler.path_build(profiler.dircurrent(__file__), 'generation')
 profiler.makedirs(export)
@@ -34,7 +34,7 @@ def generate_url(url):
     url = url.lower()
 
     if url:
-        result, _, errors = validate({'url': url}, {"url": UrlRule()}, return_info=True)  # True
+        result, _, errors = validate({'url': url}, {"url": URLRule()}, return_info=True)  # True
 
         if result:
             qr = QRCoder(export)
