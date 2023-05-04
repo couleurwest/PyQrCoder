@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" type="image/x-icon" href="logo.ico">
+        <link rel="stylesheet" href="css/basis.min.css">
+        <link rel="stylesheet" href="css/qrcoder.min.css">
+
+        <title>WQRCoder</title>
+    </head>
+    <body>
+        <header>
+            <img src="pics/banniere.png" alt="Banière West Wild Web Projet QRCoder avec un colibri multicolor "/>
+        </header>
+
+        <form id="pager" class="">
+            <header><a href="#terminer"  onclick="exit()" alt="terminer et fermer la fenetre">Fermer</a></header>
+            <section >
+                <form>
+                    <fieldset>
+                        <legend>Vos informations</legend>
+                        <div class="content">
+                            <div class="rbox f-2">
+                                <input id="name" type="text" name="name" required="required" placeholder="NOM"/>
+                            </div>
+                            <div class="rbox f-2">
+                                <input id="surname"  type="text" name="surname" required="required" placeholder="Prénom"/>
+                            </div>
+                            <div  class="rbox f-1">
+
+                                <input id="phone_1" name="phone_1" type="tel" placeholder="Num. Téléphone"/>
+                            </div>
+                            <div class="rbox f-3">
+
+                                <input name="email" id="email" type="email" placeholder="Adresse electronique"/>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Votre entreprise</legend>
+                        <div class="content">
+                            <div class="rbox f-4">
+                                <input type="text"  id="corp" name="corp" placeholder="Nom entreprise"/>
+                            </div>
+                            <div class="rbox f-1">
+                                <input id="phone_2" name="phone_2" type="tel" placeholder="Téléphone Pro"/>
+                            </div>
+                            <div class="rbox f-3">
+                            <input id="url" name="url" type="url" placeholder="URL site wev"/>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="btn-group" >
+                        <button class="button" type="button" onclick="generate_vcard()">VCard</button>
+                        <button class="button" type="button"  onclick="generate_url()">URL</button>
+                    </div>
+                </form>
+            </section>
+
+        </form>
+            <footer><span id="log_message">Entrez vos données afin de générer votre QRCode</span></footer>
+
+    </body>
+    <script type="text/javascript" src="/eel.js"></script>
+    <script type="text/javascript">
+        const reg_email = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/i);
+        const reg_uri =  new RegExp(/^(https?):\/\/[a-z0-9\/:%_+.,#?!@&=-]+/gi);
+        const reg_phone =  new RegExp(/^(0|\+\d{2,3})[1-9]([-. ]?[0-9]{2}){4}$/);
+        const form = document.querySelector('form');
+        const logger = document.getElementById('log_message');
+
+        let message = "Vérifiez votre formulaire :"
+        function generate_vcard() {
+            let js = {};
+            let msg = "";
+            let msg2 = "";
+
+            reset_form_js()
+
+            let field = form['name'];
+            let v = field.value;
+            if (v)
+                js['name'] = v;
+            else {
+                field.classList.add("missing");
+                msg += " nom ";
+            }
+
+            field = form['surname'];
+            v = field.value;
+            if (v)
+                js['surname'] = v;
+            else {
+                field.classList.add("missing");
+                msg += " prénom ";
+            }
+            
+            
+            field = form['phone_1'];
+            v = field.value;
+            if (v)
+                if (reg_phone.test(v))
+                    js['phone_1'] = v;
+                else {
+                    field.classList.add("missing");
+                    msg += " telephone perso ";
+                }
+
+            field = form['email'];
+            v = field.value;
+            if ((v) && reg_email.test(v))
+                js['email'] = field.value;
+            else {
+                field.classList.add("missing");
+                msg += " email ";
+            }
+
+            field = form['corp'];
+            v = field.value;
+            if (v)
+                js['corp'] = v;
+            
+            field = form['phone_2'];
+            v = field.value;
+            if (v) 
+                if (reg_phone.test(v))
+                    js['phone_2'] = v;
+                else{
+                    field.classList.add("missing");
+                    msg += " téléphone pro. ";
+                }
+                
+            field = form['url'];
+            v = field.value;
+            if (v) 
+                if (reg_uri.test(v))
+                    js['url'] = v;
+                else{
+                    field.classList.add("missing");
+                    msg += " site web "
+                }
+
+            if (msg==="")
+                eel.generate_vcard(js);
+            else
+                if (msg !== "")
+                    msg = message + msg
+
+                log_result("warning", msg);
+
+            return false;
+        }
+        function generate_url() {
+            reset_form_js();
+            let field = form['url'];
+            url = field.value;
+            if ((url) && reg_uri.test(url))
+                eel.generate_url(url);
+            else{
+                field.classList.add("missing");
+                log_result ("warning", "Vous devez saisir une adresse pour votre site web")
+            }
+            return false;
+        }
+
+        function exit(){
+            close();
+        }
+
+        eel.expose(log_result)
+        function log_result(status, message) {
+            logger.classList.remove(["success", "warning", "alert"])
+            logger.classList.add(["success"])
+            logger.innerHTML = message
+        }
+
+        eel.expose(set_backround)
+        function set_backround (itm, good){
+            let element =document.getElementById(field)
+            if (good)
+                element.classList.remove("missing")
+            else
+                element.classList.add("missing")
+        }
+
+        eel.expose(reset_form_js)
+        function reset_form_js (){
+            logger.classList.remove(["success", "warning", "alert"]);
+
+            ['name', 'surname', 'email', 'phone_1', 'phone_2', 'url'].forEach((field) => {
+                let element =document.getElementById(field);
+                element.classList.remove("missing")
+            });
+        }
+        document.getElementById('pager').onsubmit = function() {
+            return false;
+        };
+    </script>
+</html>

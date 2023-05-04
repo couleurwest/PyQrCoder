@@ -1,0 +1,94 @@
+$font_primary_path:      "../fonts/primary"
+$font-secondary_path:    "../fonts/secondary"
+$font-a11:    "../fonts/a11/Atkinson-Hyperlegible-"
+//********** WINDOWS
+//$font_format_items: ("eot": "embedded-opentype", "svg":"svg","ttf":"truetype", "woff":"woff","woff2":"woff2")
+//$font_secondary_items: ("eot": "embedded-opentype", "svg":"svg","ttf":"truetype", "woff":"woff","woff2":"woff2")
+
+//********** LINUX
+
+
+@font-face
+  font-family: "a11"
+  font-weight: bold
+  font-style: normal
+  src: url("#{$font-a11}Bold-102.eot") format('embedded-opentype'),
+  url("#{$font-a11}Bold-102.svg") format('svg'),
+  url("#{$font-a11}Bold-102.woff") format('woff'),
+  url("#{$font-a11}Bold-102.woff2") format('woff2'),
+  url("#{$font-a11}Bold-102.ttf") format('truetype')
+
+@font-face
+  font-family: "a11"
+  font-weight: bold
+  font-style: italic
+  src: url("#{$font-a11}BoldItalic-102.eot") format('embedded-opentype'),
+  url("#{$font-a11}BoldItalic-102.svg") format('svg'),
+  url("#{$font-a11}BoldItalic-102.woff") format('woff'),
+  url("#{$font-a11}BoldItalic-102.woff2") format('woff2'),
+  url("#{$font-a11}BoldItalic-102.ttf") format('truetype')
+
+@font-face
+  font-family: "a11"
+  font-weight: normal
+  font-style: italic
+  src: url("#{$font-a11}Italic-102.eot") format('embedded-opentype'),
+  url("#{$font-a11}Italic-102.svg") format('svg'),
+  url("#{$font-a11}Italic-102.woff") format('woff'),
+  url("#{$font-a11}Italic-102.woff2") format('woff2'),
+  url("#{$font-a11}Italic-102.ttf") format('truetype')
+
+@font-face
+  font-family: "a11"
+  font-weight: normal
+  font-style: normal
+  src: url("#{$font-a11}Regular-102.eot") format('embedded-opentype'),
+  url("#{$font-a11}Regular-102.svg") format('svg'),
+  url("#{$font-a11}Regular-102.woff") format('woff'),
+  url("#{$font-a11}Regular-102.woff2") format('woff2'),
+  url("#{$font-a11}Regular-102.ttf") format('truetype')
+
+
+
+@font-face
+  font-family: "primary"
+  font-weight: bold
+  font-style: italic
+  src: url("#{$font_primary_path}/Inter-BoldItalic.eot") format('embedded-opentype'),
+  url("#{$font_primary_path}/Inter-BoldItalic.svg") format('svg'),
+  url("#{$font_primary_path}/Inter-BoldItalic.woff") format('woff'),
+  url("#{$font_primary_path}/Inter-BoldItalic.ttf") format('truetype')
+
+@font-face
+  font-family: "primary"
+  font-weight: bold
+  font-style: normal
+  src: url("#{$font_primary_path}/Inter-Bold.eot") format('embedded-opentype'),
+  url("#{$font_primary_path}/Inter-Bold.svg") format('svg'),
+  url("#{$font_primary_path}/Inter-Bold.woff") format('woff'),
+  url("#{$font_primary_path}/Inter-Bold.ttf") format('truetype')
+
+@font-face
+  font-family: "primary"
+  font-style: italic
+  src: url("#{$font_primary_path}/Inter-Italic.eot") format('embedded-opentype'),
+  url("#{$font_primary_path}/Inter-Italic.svg") format('svg'),
+  url("#{$font_primary_path}/Inter-Italic.woff") format('woff'),
+  url("#{$font_primary_path}/Inter-Italic.ttf") format('truetype')
+
+@font-face
+  font-family: "primary"
+  font-weight: 400
+  font-style: normal
+  src: url("#{$font_primary_path}/Inter-Regular.eot") format('embedded-opentype'),
+  url("#{$font_primary_path}/Inter-Regular.svg") format('svg'),
+  url("#{$font_primary_path}/Inter-Regular.woff") format('woff'),
+  url("#{$font_primary_path}/Inter-Regular.ttf") format('truetype')
+
+@font-face
+  font-family: "secondary"
+  font-weight: 400
+  src: url("#{$font-secondary_path}/secondary.eot") format('embedded-opentype'),
+  url("#{$font-secondary_path}/secondary.svg") format('svg'),
+  url("#{$font-secondary_path}/secondary.woff") format('woff'),
+  url("#{$font-secondary_path}/secondary.ttf") format('truetype')

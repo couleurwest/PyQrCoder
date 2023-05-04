@@ -1,0 +1,88 @@
+%glasseffect
+  border-radius: 5px
+  backdrop-filter: blur(3.1px)
+  -webkit-backdrop-filter: blur(3.1px)
+  transition: ease 0.5s
+  color: inherit
+
+@mixin glassfondation ($base-color, $base-front_low, $base-front_hight)
+  @extend %glasseffect
+  background:  $base-color linear-gradient(0deg, $base-front_low 0%, $base-front_hight 133%)
+  box-shadow: 0 0 10px $base-front_low
+  border: 1px solid $base-front_hight
+
+@mixin glasseffect ($base-color, $front-color)
+  @include glassfondation($base-color, rgba($front-color, 0.5), rgba($front-color, 0.65) )
+
+
+@mixin form-items ($b, $d, $l)
+  border-bottom-color: $b!important
+  color: $b!important
+
+  &:hover, &:focus
+    color: $d!important
+
+  &:focus
+    border: solid thin white!important
+    border-radius: 5px!important
+
+@mixin theming ($theme_css)
+  @each $v, $colors in $theme_css
+    $d: map-get($colors, "dark")
+    $b: map-get($colors, "base")
+    $l: map-get($colors, "lite")
+
+    @include theming_item (#{$v}_lite, $l, $b, $d)
+    @include theming_item (#{$v}_dark, $d, $l, $b)
+    @include theming_item ($v, $b, $d, $l)
+
+@mixin theming_item ($v, $p, $s, $f)
+    .bg-#{$v}
+      background: rgba($p, 0.8)
+      color: $s!important
+      border-color: $s
+
+      &.card, &.callout
+        @include glasseffect(transparent, $p)
+
+      & label
+        color: $s
+
+      & select, & [type='text'], & [type='password'], & [type='date'], & [type='datetime'], & [type='datetime-local'], & [type='month'],&  [type='week'], & [type='email'],&  [type='number'], & [type='search'], & [type='tel'], & [type='time'],&  [type='url'], & [type='color']
+        @include form-items($p, $s, $s)
+
+      & .select2-selection__choice
+        background-color: $f
+        border: 1px solid $f
+        color: $p
+
+      &.button
+        background-color: rgba!important
+        color:  $s!important
+        border-color: rgba($s, 0.1)!important
+        line-height: 1.2
+
+        &:hover
+          background-color: $s!important
+          color:  $f!important
+          border-color:  rgba($f, 0.1)!important
+
+      &.kover:hover, &.kover:active
+        @include glasseffect (transparent, $s)
+        border-radius: 5px
+        backdrop-filter: None!important
+        -webkit-backdrop-filter: None!important
+        box-shadow: unset!important
+        color: $f!important
+
+    .txt-#{$v}, a.txt-#{$v}, button.txt-#{$v}
+      color: $p!important
+
+    a.txt-#{$v}:hover, a.txt-#{$v}:focus
+      color: $s!important
+
+    .bd-#{$v}
+      border-color: $p
+      box-shadow: 1px 1px 1px $s, -1px -1px 1px $f
+
+

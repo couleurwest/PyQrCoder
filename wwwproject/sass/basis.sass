@@ -1,0 +1,344 @@
+@import "common"
+@import "method"
+
+body
+  font-family:  "Poppins","primary", serif
+  font-size: 13px
+  line-height: 1.2rem
+  min-height: 100vh
+
+  &, h1, h2, h3, h4, h5, h6
+    @extend %ff
+
+  &#bg-500
+    @extend %bg_red
+
+  &#bg-403
+    @extend %bg_violet
+
+  &#bg-404
+    @extend %bg_orange
+
+
+h1, h2, h3, h4, h5, h6
+  font-variant: all-petite-caps
+  text-shadow: 1px 1px 2px #0003
+  font-variant: bold
+
+
+h1
+  font-size: 2.2rem
+h2
+  font-size: 2rem
+h3
+  font-size: 1.8rem
+h4
+  font-size: 1.6rem
+h5
+  font-size: 1.4rem
+h6
+  font-size: 1.3rem
+
+
+
+  small, input.small
+    font-variant: normal
+    font-size: 0.85rem
+    font-style: italic
+
+text, .text-content
+  text-align: justify
+  display: inherit
+  white-space : pre-line
+  font-size: 1em
+  line-height: 1.8em
+
+textarea
+  white-space: pre-wrap!important
+
+tbody
+  border: none
+  background: transparent
+  tr:nth-child(even)
+    background-color: rgba(255,255,255,0.1)
+
+dl
+  font-variant: normal
+
+  &.inline
+    text-align: left
+    & > dt
+      text-align: left
+      margin-right: 0.5rem
+      display: inline-block
+    & > dd
+      display: inline-block
+    &.elegant
+      & > dt
+        text-align: left
+
+      & > dd
+        text-align: left
+        padding-left: 2rem
+label
+  font-weight: normal
+  font-size: inherit
+
+select
+  background-color: rgba(255,255,255,0.3)
+  & > option
+    background-color: rgba(200,255,255,0.1)
+    color: rgba(black,0.5)
+
+    &:nth-child(odd)
+      background-color: rgba(200,255,255,0.2)
+
+  &, [type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'], [type='month'], [type='week'], [type='email'], [type='number'], [type='search'], [type='tel'], [type='time'], [type='url'], [type='color']
+    @include form-items(whitesmoke, black ,white)
+
+    &::placeholder
+        color: #555
+        font-size: 0.85rem
+        font-style: italic
+
+    &:hover
+        box-shadow: none
+        border: solid thin transparent
+        border-bottom: thin solid white
+
+    &, textarea
+        font-size: 0.9rem
+        margin: 0.5rem 0 0.5rem
+
+[type='submit'], [type='reset']
+    border-radius: inherit
+
+a.nice-fx
+  padding: 2px
+  border-radius: 50%
+  width: 32px
+  display: inline-block
+  &:hover
+    background-color: #fffA
+
+a.img-gscale > img
+  filter: grayscale(100%)
+
+  &:hover
+    filter: grayscale(0)
+
+a.img-sepia > img
+  filter: sepia(85%)
+
+  &:hover
+    filter: sepia(0)
+
+a.img-opacity > img
+  filter: opacity(70%)
+
+  &:hover
+    filter: opacity(100)
+
+
+#main_header
+  background-color:  rgba(white,0.9)
+#main-footer
+  background-color: rgba(0,0,0,0.5)
+
+#back2Top
+  width: 40px
+  line-height: 40px
+  overflow: hidden
+  z-index: 999
+  display: none
+  cursor: pointer
+  -moz-transform: rotate(270deg)
+  -webkit-transform: rotate(270deg)
+  -o-transform: rotate(270deg)
+  -ms-transform: rotate(270deg)
+  transform: rotate(270deg)
+  position: fixed
+  bottom: 50px
+  right: 0
+  background-color: #DDD
+  color: #555
+  text-align: center
+  font-size: 30px
+  text-decoration: none
+  &:hover
+    background-color: #DDF
+    color: #000
+
+.bg-info-image
+  @extend %bg_blue
+.bg-success-image
+  @extend %bg_green
+.bg-warning-image
+  @extend %bg_orange
+.bg-alert-image
+  @extend %bg_red
+.bg-flash-image
+  @extend %bg_violet
+
+.top-bar
+    backdrop-filter: blur(5px)
+    &, .top-bar ul
+        background-color: transparent
+.small-icon::before
+    font-size: 1.3rem
+.label-input
+    margin-bottom: 1em
+
+.button-group
+  input.button
+    margin: 0
+    &:first-child
+      border-right: none
+      border-top-right-radius: 0!important
+      border-bottom-right-radius: 0!important
+    &:last-child
+      border-left: none
+      border-top-left-radius: 0!important
+      border-bottom-left-radius: 0!important
+    &:not(:first-child):not(:last-child)
+      border-right: none
+      border-top-right-radius: 0!important
+      border-bottom-right-radius: 0!important
+      border-left: none
+      border-top-left-radius: 0!important
+      border-bottom-left-radius: 0!important
+
+.button, button
+  padding: 5px 10px
+  background-color: rgba(0,0,0,0.5)
+  color:  inherit
+  border-color:  rgba(0,0,0,0.1)
+  line-height: 1.2
+  margin: 0.2rem
+  transition: ease .5s
+
+  input> img
+      margin-right: 10px
+  &:hover
+    background-color: rgba(255,255,255,0.5)
+    border-color:  rgba(255,255,255,0.1)
+    transition: ease .5s
+
+img.simple-captcha-img
+  min-width: 160px!important
+  width: 100%!important
+  height: 60px
+
+.simple-captcha-text
+  background: rgba(255, 255, 255, 0.1)!important
+  min-width: 160px!important
+  width: 100%!important
+  &:focus
+    background: rgba(255, 255, 255, 0.4)!important
+    border-radius: 0!important
+
+.txt-small
+    font-size: 0.9rem
+.txt-tiny
+    font-size: 0.7rem
+  
+select, input[type='text'],
+input[type='password'], input[type='date'],
+input[type='datetime'], input[type='datetime-local'],
+input[type='month'],input[type='week'], input[type='email'],
+input[type='number'], input[type='search'], input[type='tel'],
+input[type='time'],input[type='url'], input[type='color']
+  background-color: transparent!important
+  padding: 5px
+  line-height: 1.2rem
+  box-shadow: none!important
+  border: solid thin transparent
+  border-bottom-color: white!important
+
+  text-align: center
+
+  &:focus
+    background-color: rgba(0,0,0,0.2)!important
+    box-shadow: none!important
+    border: solid thin white!important
+    border-radius: 5px!important
+
+  &::placeholder
+    color: #a4a4a4
+    font-style: italic
+
+.callout, .card
+  @include glassfondation(transparent, rgba(white,0.4), rgba(white,0.6))
+  color: white
+
+  & select, & input[type='text'], & input[type='password'], & input[type='date'], & input[type='datetime'], & input[type='datetime-local'], & input[type='month'],& input [type='week'], & input[type='email'],& input [type='number'], & input[type='search'], & input[type='tel'], & input[type='time'],& input [type='url'], & input[type='color']
+    @include form-items(black, #aaa, white)
+
+  &.bg_dark
+    @include glassfondation(transparent, rgba(black,0.6), rgba(black,0.4))
+    box-shadow: 0 0 2px rgba(black, 0.5)
+
+    & select, & input[type='text'], & input[type='password'], & input[type='date'], & input[type='datetime'], & input[type='datetime-local'], & input[type='month'],& input [type='week'], & input[type='email'],& input [type='number'], & input[type='search'], & input[type='tel'], & input[type='time'],& input [type='url'], & input[type='color']
+      @include form-items(white, black, #555)
+
+.card
+  box-shadow: none!important
+
+  & > .card-header
+    background: rgba(0, 0, 0, 0.3)
+
+  & > .card-footer
+    background: rgba(125, 125, 125, 0.3)
+    padding: 0.5em 1em
+    display: block
+    height: auto
+    /* margin: 0 */
+    width: 100%
+    font-size: 1.5em
+    line-height: 2em
+    text-align: left
+
+    &.card-header-clean
+        padding: 0
+        display: block
+        background: none
+        margin: 0
+
+    &.card-header-shadow
+        text-shadow: 1px 1px 2px white, 0 0 25px silver, 0 0 5px #888
+
+    &.card-dark
+      background-color: rgba(black,0.7)
+      color: white
+
+    &.card-title
+        font-size: 1.5rem
+        line-height: 1.8rem
+
+  & > .card-footer
+    background-color: rgba(black,0.5)
+    border-top: thin solid rgba(black,0.8)
+    font-size: 1rem
+    line-height: 2rem
+    min-height: 2rem
+    padding: 0.3em 0 0.5rem
+    display: block
+
+.no-border
+    border: none
+    border-radius: 0
+    box-shadow: none
+
+.no-effect
+  box-shadow: none
+  backdrop-filter: none
+  -webkit-backdrop-filter: none
+
+.select2
+    width: 100%!important
+    font-size: 0.9rem
+    line-height: 1
+
+#flash_message.reveal
+    background-color: transparent
+    border: none

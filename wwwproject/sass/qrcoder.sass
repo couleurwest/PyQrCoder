@@ -1,0 +1,157 @@
+@import 'wwwproject_color'
+*
+  box-sizing: border-box
+
+$footer-size: 1.6rem
+$header-size: 100px
+$nav-bar: 1.5rem
+
+html
+  height: 100vh
+  width: 100vw
+  background: $color-primary url("../pics/bg-primary.png") no-repeat center center
+  color: $color-primary_lite
+
+body
+  padding: 0
+  margin: 0
+  height: 100vh
+  width: 100vw
+  overflow: hidden
+  font-size: 14px
+  & > header
+    color: white
+    background: rgba($color-primary_dark, 0.2)
+    height: $header-size
+    text-align: center
+    &  > img
+      height: 100%
+  & > footer
+    padding: 5px 10px
+    line-height: 0.8rem
+    text-align: center
+    background-color: $color-bluegray_lite
+    border-width: 2px
+    border-style: inset
+    height: $footer-size
+    & > *
+      font-size: 0.8rem
+      color: $color-bluegray_dark
+    &.success
+      background-color: rgba($color-success, 0.6)
+    &.warning
+      background-color: rgba($color-beurk_lite, 0.6)
+    &.success
+      background-color: rgba($color-alert, 0.6)
+
+
+
+fieldset
+  border-bottom: none
+  border-right: none
+  border-left: none
+  border-top: solid thin $color-successlemon_dark
+
+  & > legend
+    font-size: 1.1rem
+    color: $color-successlemon_dark
+
+  & input
+    color: white
+    &.missing
+      background-color: rgba(0,0,0,0.2) !important
+      box-shadow: inset 1px 1px 2px $color-alert_lite , inset -1px -1px 1px $color-alert_lite!important
+      border: solid thin white !important
+      border-radius: 5px !important
+
+a
+  color: $color-beurk_lite!important
+  text-decoration: none
+  &:hover
+    filter: sepia(50)
+#pager
+  display: flex
+  flex-direction: column
+  height: calc(100vh - #{$header-size}  - #{$footer-size})
+
+  & > header
+    color: white
+    background: rgba($color-primary_dark,0.6)
+    text-align: right
+    padding: 5px 20px
+    line-height: 1.2
+    font-size: 0.9rem
+
+  & > section
+    height: 100%
+    padding: 1.5rem
+    overflow: auto
+
+.content
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  flex: 1
+
+  & > .rbox
+    padding: 0px 5px
+    margin: 15px 0
+    display: grid
+    &.f-1, &.f-2, &.f-3, &.f-4
+      flex: 1 100%
+
+    & > label
+      display: block
+
+    & > input
+      width: 100%
+      font-size: 1rem
+      &[type=email],&[type=url]
+        text-transform: lowercase
+      &[type=text]
+        text-transform: uppercase
+
+.btn-group
+    display: flex
+    //flex-flow: column wrap
+    justify-content: space-around
+    //align-items: stretch
+    //flex-flow: row wrap
+
+    & > button
+      flex-grow: 0.7
+
+
+
+
+@media screen and (min-width: 768px)
+  .content > .rbox
+    &.f-1
+      flex: 35%
+
+    &.f-2
+      flex: 50%
+
+    &.f-3
+      flex: 65%
+
+
+@media screen and (min-width: 992px)
+  .content > .rbox
+    &.f-1
+      flex: 25%
+
+    &.f-2
+      flex: 50%
+
+    &.f-3
+      flex: 75%
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,75 @@
+@import "common"
+@import "method"
+
+$color-primary_dark: $color-successlemon_dark
+$color-primary: $color-successlemon
+$color-primary_lite: $color-successlemon_lite
+
+$color-secondary_dark: $color-maroon_dark
+$color-secondary: $color-maroon
+$color-secondary_lite: $color-maroon_lite
+
+$primary : ( "base": $color-primary, "lite": $color-primary_lite , "dark": $color-primary_dark )
+$secondary : ("base": $color-secondary, "lite": $color-secondary_lite, "dark": $color-secondary_dark )
+
+$android : ("base": $color-beurk, "lite": $color-beurk_lite, "dark": $color-beurk_dark)
+$standalone : ("base": $color-pink ,"lite": $color-pink_lite, "dark": $color-pink_dark)
+$webservices : ( "base": $color-bluegray,"lite": $color-bluegray_lite,  "dark": $color-bluegray_dark)
+
+$rb-color0:  black
+$rb-color1:	#a50000
+$rb-color2:	#f93e9b
+$rb-color3:	#bb00bb
+$rb-color4:	#63287a
+$rb-color5:	#37029a
+$rb-color6: #127291
+$rb-color7: #027a7e
+$rb-color8: #178a5f
+$rb-color9: #3a8301
+$rb-color10: #d74507
+
+$rbcolors:  ("color-0" : $rb-color0, "color-1" : $rb-color1,"color-2" : $rb-color2,"color-3" : $rb-color3, "color-4" : $rb-color4,"color-5" : $rb-color5,"color-6" : $rb-color6, "color-7" : $rb-color7,"color-8" : $rb-color8,"color-9" : $rb-color9,"color-10" : $rb-color10)
+
+@each $k, $v in $rbcolors
+    .#{$k}
+      background-color: rgba(silver, 0.3)!important
+      border-color: rgba(silver, 0.5)!important
+      color:  black!important
+
+      &:hover,  &:hover + label
+        background-color: rgba($v, 0.3)!important
+        border-color: rgba($v, 0.5)!important
+        color:  white!important
+
+    .radiobutton input
+      &:checked + label.#{$k}, &:checked + label.#{$k}:active
+        background-color: rgba($v, 0.8)!important
+        border-color: rgba($v, 0.8)!important
+        color:  white!important
+
+    .rb-tab:hover .rb-spot.#{$k}, .rb-tab.rb-tab-active .rb-spot.#{$k}
+      background-color: rgba($v, 0.8)!important
+      border-color: rgba($v, 0.8)!important
+      color:  white!important
+
+
+
+
+
+$theme-basics:  ("primary" : $primary, "secondary" : $secondary,"success" : $success, "info" : $infos, "warning" : $warning, "alert": $alert, "light": $ligten, "dark": $darken, "flash": $flash , "android":$android, "standalone": $standalone , "webservices":$webservices)
+
+@include theming ($theme-basics)
+.bg-primary
+  @extend %bg_green_yellow
+.bg-secondary
+  @extend %bg_maroon
+
+.bg-android-image
+  @extend %bg_orange
+
+.bg-webservices-image
+  @extend %bg_blue
+
+.bg-standalone-image
+  @extend %bg_red
+
