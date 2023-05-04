@@ -11,10 +11,4 @@ setup(
 )
 
 #python -m eel [your_main_script] [your_web_folder]
-#pyinstaller main.py --hidden-import bottle_websocket --add-data C:\Python310\lib\site-packages\eel\eel.js;eel --add-data wwwproject;wwwproject --onefile --noconsole
-
-
-"""
-Copyright fonts : <div>Font made from <a href="http://www.onlinewebfonts.com">oNline a11y-atkinson</a>is licensed by CC BY 3.0</div>
- Copyright (c) 2011 by Santiago Orozco (hi@typemade.mx) with reserved name Italiana 
-"""
+#wine python -m eel main.py wwwproject -n PyQrCoder  --add-data="config.yml;." --add-data="main.js;." --add-data="package.json;." --clean --noconfirm -i "wwwproject/logo.ico" --hidden-import bottle_websocket --noconsole  --windowed

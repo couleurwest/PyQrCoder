@@ -1,0 +1,21 @@
+basis:
+  port: 27000
+  block: True
+  size: (800, 680)
+  allowed_extensions: ['.js', '.html']
+electron:
+  mode: 'electron'
+  #args: 'c:\Python310\lib\site-packages\eel\eel.js', '.']
+  args: ['/usr/lib/electron/electron', '.']
+chrome-app:
+  mode: 'chrome-app'
+  disable_cache: True
+  allowed_extensions: [ '.js', '.html' ]
+  cmdline_args: [
+    '–-disable-sync',
+    '--browser-startup-dialog',
+    '--incognito', '--no-experiments' ]
+edge:
+  mode: 'edge'
+
+
